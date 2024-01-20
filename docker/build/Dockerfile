@@ -15,4 +15,4 @@ VOLUME /app
 VOLUME /data
 
 ENTRYPOINT /bin/bash
-COMMAND ['-c', 'ls']
+CMD ['-c', 'ls']
