@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+  <title>Your CSS-only Toggle Sidebar Example</title>
+</head>
+<body class="flex h-screen bg-gray-600 text-white">
+  <!-- Sidebar Toggle -->
+  <input type="checkbox" class="toggle peer hidden" id="toggleSidebar">
+  <label for="toggleSidebar" class="show-sidebar peer-checked:hidden block lg:hidden fixed top-4 right-4 px-2 py-1 bg-gray-900 text-white cursor-pointer">
+    Menu
+  </label>
+  <label for="toggleSidebar" class="hide-sidebar peer-checked:block hidden lg:hidden fixed bg-gray-800 bg-opacity-70 h-screen w-screen text-white cursor-pointer z-40">
+    <!-- Empty label to capture clicks on the background -->
+  </label>
+
+  <!-- Sidebar -->
+  <aside id="sidebar" class="sidebar peer-checked:block hidden lg:block lg:w-80 w-64 bg-gray-900 text-white p-4 fixed h-screen overflow-y-auto inset-y-0 left-0 z-50">
+    <!-- Title -->
+    <h1 class="text-2xl font-bold mb-4">Sidebar</h1>
+    <!-- Your sidebar content goes here -->
+    <div>
+      <p>
+        This is a sample sidebar content.
+      </p>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-1 p-4 lg:ml-80 w-80 main-content">
+    <!-- Your main content goes here -->
+    <div class="h-screen overflow-y-auto">
+      <h2 class="text-2xl font-bold mb-4">Main Content</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec ex vel ligula facilisis consequat.
+        Sed tristique est a purus ultricies, id elementum velit gravida. Vivamus eu erat sit amet nisi fermentum
+        tempor ac ac velit. Sed ultricies eu ex in sagittis. Proin accumsan ex vel mi euismod efficitur.
+        Sed vel nisi eu ligula rhoncus efficitur non a urna. Donec ultricies urna sit amet libero scelerisque,
+        non iaculis urna tincidunt. Aenean vel efficitur neque, at convallis risus.
+      </p>
+    </div>
+  </main>
+
+</body>
+</html>
