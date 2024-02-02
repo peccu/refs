@@ -1,0 +1,11 @@
+{
+    "runArgs": [
+        "--device=/dev/net/tun"
+    ],
+    "features": {
+        "ghcr.io/tailscale/codespace/tailscale": {},
+        "ghcr.io/devcontainers/features/sshd:1": {
+            "version": "latest"
+        }
+    }
+}
