@@ -9,3 +9,6 @@
 # or add permission to current repository
 # https://github.com/settings/codespaces
 sudo tailscale up --authkey $TAILSCALE_AUTHKEY
+
+mkdir -p ~/.ssh
+echo "$SSH_PUBKEY" >> ~/.ssh/authorized_keys
