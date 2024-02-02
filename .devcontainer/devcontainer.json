@@ -6,6 +6,8 @@
         "ghcr.io/tailscale/codespace/tailscale": {},
         "ghcr.io/devcontainers/features/sshd:1": {
             "version": "latest"
-        }
-    }
+        }// ,
+	// "ghcr.io/devcontainer-contrib/features/emacs-nox-apt-get": {}
+    },
+    "postCreateCommand": "/bin/bash -ex ./.devcontainer/setup.sh > postCreateCommand.log"
 }
