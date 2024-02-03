@@ -8,7 +8,8 @@
     <title>File Manager</title>
   </head>
   <body>
-    <div id="app" class="flex h-screen bg-gray-600 text-white">
+    <div id="app" class="flex h-screen w-screen bg-gray-600 text-white">
+
       <!-- Sidebar Toggle -->
       <input type="checkbox" class="toggle peer hidden" id="toggleSidebar">
       <label for="toggleSidebar" class="show-sidebar peer-checked:hidden block lg:hidden fixed top-4 right-4 px-2 py-1 bg-gray-900 text-white cursor-pointer">
@@ -19,7 +20,7 @@
       </label>
 
       <!-- Sidebar -->
-      <aside id="sidebar" class="sidebar peer-checked:block hidden lg:block lg:w-80 w-64 bg-gray-900 text-white p-4 fixed h-screen overflow-y-auto inset-y-0 left-0 z-50">
+      <aside id="sidebar" class="sidebar peer-checked:block hidden lg:block lg:w-72 w-64 bg-gray-900 text-white p-4 fixed h-screen overflow-y-auto inset-y-0 left-0 z-50">
         <!-- Title -->
         <h1 class="text-2xl font-bold mb-4">File Manager</h1>
 
@@ -107,24 +108,25 @@
 
           <!-- Debug area -->
           <h2 class="text-2xl font-bold mt-8 mb-4">Debug area</h2>
-          <div class="flex gap-2">
-            <button class="bg-green-500 text-white px-4 py-2 rounded" @click="getData('/posts/1')">GET</button>
-            <button class="bg-green-500 text-white px-4 py-2 rounded" @click="postSample('/posts')">POST</button>
-            <button class="bg-green-500 text-white px-4 py-2 rounded" @click="patchSample('/posts/1')">PATCH</button>
-            <button class="bg-green-500 text-white px-4 py-2 rounded" @click="deleteData('/posts/1')">DELETE</button>
+          <div class="w-full">
+            <div class="flex gap-2">
+              <button class="bg-green-500 text-white px-4 py-2 rounded" @click="getData('/posts/1')">GET</button>
+              <button class="bg-green-500 text-white px-4 py-2 rounded" @click="postSample('/posts')">POST</button>
+              <button class="bg-green-500 text-white px-4 py-2 rounded" @click="patchSample('/posts/1')">PATCH</button>
+              <button class="bg-green-500 text-white px-4 py-2 rounded" @click="deleteData('/posts/1')">DELETE</button>
+            </div>
+            <h3 class="text-xl">Method</h3>
+            {{ debug.method }}
+            <h3 class="text-xl">Endpoint</h3>
+            {{ debug.endpoint }}
+            <h3 class="text-xl">Header</h3>
+            <pre class="overflow-x-auto">{{ debug.header }}</pre>
+            <h3 class="text-xl">Body</h3>
+            <pre class="w-full overflow-x-scroll">{{ debug.body }}</pre>
+            <h3 class="text-xl">Response</h3>
+            <pre class="w-full overflow-x-scroll">{{ debug.response }}</pre>
           </div>
-          <h3 class="text-xl">Method</h3>
-          {{ debug.method }}
-          <h3 class="text-xl">Endpoint</h3>
-          {{ debug.endpoint }}
-          <h3 class="text-xl">Header</h3>
-          <pre class="w-screen overflow-x-auto">{{ debug.header }}</pre>
-          <h3 class="text-xl">Body</h3>
-          <pre class="w-screen overflow-x-auto">{{ debug.body }}</pre>
-          <h3 class="text-xl">Response</h3>
-          <pre class="w-screen overflow-x-auto">{{ debug.response }}</pre>
 
-        </div>
       </main>
     </div>
 
