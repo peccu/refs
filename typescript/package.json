@@ -1,0 +1,20 @@
+{
+    "name": "appname",
+    "module": "src/script.ts",
+    "type": "module",
+    "scripts": {
+        "build": "bun run build:ts & bun run build:pug",
+        "build:ts": "bun build src/script.ts --outdir ./dist",
+        "build:pug": "bash -c 'cat src/head.html <(bunx pug <src/partial.pug) src/tail.html > dist/index.html'",
+        "test": "bun test && bunx tsc"
+    },
+    "devDependencies": {
+        "@types/bun": "latest",
+        "bun": "^1.0.25",
+        "pug-cli": "^1.0.0-alpha6"
+    },
+    "peerDependencies": {
+        "typescript": "^5.0.0"
+    },
+    "dependencies": {}
+}
