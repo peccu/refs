@@ -23,7 +23,10 @@
     "src/*"
   ],
   "exclude": [
+    /* does not excludes imported files */
+    /* you canignore file by @ts-nocheck */
     "*.test.ts",
+    "*.spec.ts",
     "node_modules",
     "./node_modules",
     "./node_modules/*",
