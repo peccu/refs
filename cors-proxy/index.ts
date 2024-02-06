@@ -11,7 +11,6 @@ app.get("/", (_req, res) => {
   res.redirect("/wikipedia/en/7/7d/Lenna_%28test_image%29.png");
 });
 
-
 app.use(
   "/wikipedia",
   createProxyMiddleware({
@@ -20,11 +19,11 @@ app.use(
     selfHandleResponse: true,
     logger: console,
     on: {
-     
+
       proxyRes: responseInterceptor(async (responseBuffer, _proxyRes, _req, res) => {
         res.removeHeader('content-security-policy'); // Remove the Content Security Policy header
         return responseBuffer
-    }),
+      }),
 
     }
   })
@@ -51,11 +50,11 @@ app.use(
     selfHandleResponse: true,
     logger: console,
     on: {
-     
+
       proxyRes: responseInterceptor(async (responseBuffer, _proxyRes, _req, res) => {
         res.removeHeader('content-security-policy'); // Remove the Content Security Policy header
         return responseBuffer
-    }),
+      }),
 
     }
   })
