@@ -1,33 +1,49 @@
 version: '3.8'
+
+# https://docs.docker.com/compose/compose-file/compose-file-v3
+x-db: &db
+  image: ..
+  networks:
+    - default
+
 services:
   app:
-    profiles: ['all']
-    image: ...
     build:
-      context: build
       args:
         ARG=arg
+      context: build
+      dockerfile: Dockerfile.app
     container_name: app
-    ports:
-      - 8080:8080
-    volumes:
-      - ./:/app
-      - volume:/data
+    command: -c ls
+    depends_on:
+      - db
+    entrypoint: /bin/bash
+    env_file:
+      - app.env
+    environment:
+      PARAM=foo
     healthcheck:
       test: [ "CMD-SHELL", "curl -sI http://localhost:$${TUNNEL_LOCAL_PORT:=8080} | grep ' 200 OK'" ]
       interval: 5s
       timeout: 3s
       retries: 3
+    image: ...
+    logging:
+      options:
+        max-size: "10k"
+    networks:
+      - default
+    ports:
+      - 8080:8080
+    profiles: ['all']
     restart: always
-    entrypoint: /bin/bash
-    command: -c ls
+    volumes:
+      - ./:/app
+      - volume:/data
     working_dir: /app
-    environment:
-      PARAM=foo
-    env_file:
-      - app.env
-    depends_on:
-      - db
+
+  db:
+    << : *db
 
 volumes:
   - volume
