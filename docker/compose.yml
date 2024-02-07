@@ -21,7 +21,7 @@ services:
     env_file:
       - app.env
     environment:
-      PARAM=foo
+      - PARAM=foo
     healthcheck:
       test: [ "CMD-SHELL", "curl -sI http://localhost:$${TUNNEL_LOCAL_PORT:=8080} | grep ' 200 OK'" ]
       interval: 5s
@@ -46,7 +46,10 @@ services:
     << : *db
 
 volumes:
-  - volume
+  volume:
 
 networks:
   default:
+  gitea:
+    external: true
+    name: gitea
