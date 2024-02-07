@@ -1,4 +1,4 @@
-import express, { Application } from 'express'
+import express, { type Application } from 'express'
 import { createProxyMiddleware, responseInterceptor } from 'http-proxy-middleware'
 
 const app: Application = express();
@@ -36,16 +36,19 @@ app.use('/todos', createProxyMiddleware({
 
 var httpbinProxy = createProxyMiddleware({
   target: 'https://httpbin.org',
+  pathFilter: '/get',
   secure: false,
   changeOrigin: true             // for vhosted sites, changes host header to match to target's host
 })
-
-app.use('/get', httpbinProxy)
+app.use(httpbinProxy)
 
 app.use(
-  "/get2",
   createProxyMiddleware({
     target: "https://httpbin.org/get",
+    pathFilter: '/get2',
+    pathRewrite: {
+      '^/get2': '/get'
+    },
     changeOrigin: true,
     selfHandleResponse: true,
     logger: console,
