@@ -7,7 +7,15 @@
     "python3 -m http.server": {
       "name": "python3 -m http.server",
       "command": "python3 -m http.server",
-      "runAtStart": true
+      "runAtStart": false
+    },
+    "build proxy": {
+      "name": "build proxy",
+      "command": "cd proxy; docker build -t rp . | tee build.log"
+    },
+    "run proxy": {
+      "name": "run proxy",
+      "command": "docker run --rm -p 3000:3000 rp | tee proxy/run.log"
     }
   }
 }
